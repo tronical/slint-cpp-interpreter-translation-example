@@ -20,6 +20,8 @@ target_link_libraries(my_application PRIVATE Slint::Slint)
 target_compile_definitions(my_application PRIVATE
       SOURCE_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/\"
 )
+find_package(Intl REQUIRED)
+target_link_libraries(my_application PRIVATE Intl::Intl)
 # On Windows, copy the Slint DLL next to the application binary so that it's found.
 if (WIN32)
     add_custom_command(TARGET my_application POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:my_application> $<TARGET_FILE_DIR:my_application> COMMAND_EXPAND_LISTS)

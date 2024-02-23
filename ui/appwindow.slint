@@ -5,10 +5,10 @@ export component AppWindow inherits Window {
     callback request-increase-value();
     VerticalBox {
         Text {
-            text: "Counter: \{root.counter}";
+            text: @tr("Counter: {}", root.counter);
         }
         Button {
-            text: "Increase value";
+            text: @tr("Increase value");
             clicked => {
                 root.request-increase-value();
             }

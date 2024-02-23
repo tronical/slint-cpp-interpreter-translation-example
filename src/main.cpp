@@ -1,7 +1,15 @@
 #include <slint-interpreter.h>
 
+#include <libintl.h>
+#include <locale>
+
 int main(int argc, char **argv) {
+
+  bindtextdomain("example", SOURCE_DIR "/lang/");
+  std::locale::global(std::locale(""));
+
   slint::interpreter::ComponentCompiler compiler;
+  compiler.set_translation_domain("example");
   auto definition = compiler.build_from_path(SOURCE_DIR "/ui/appwindow.slint");
 
   for (auto diagnostic : compiler.diagnostics()) {
